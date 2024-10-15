@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import IconClose from "/icon-close.svg";
 
 export const ListWrap = styled.div`
   flex: 1;
@@ -6,10 +7,6 @@ export const ListWrap = styled.div`
   position: relative;
   margin-top: 90px;
   padding: 0 100px;
-
-  @media (max-width: 650px) {
-    padding: 0 30px;
-  }
 `;
 
 export const GridContainer = styled.div`
@@ -35,7 +32,8 @@ export const RecipeCard = styled.div`
 
 export const RecipeImage = styled.img`
   width: 100%;
-  height: 200px;
+  height: auto;
+  max-height: 300px;
   object-fit: cover;
 `;
 
@@ -97,7 +95,7 @@ export const NoticeBox = styled.div`
   width: 90%;
   padding: 50px;
   color: ${({ theme }) => theme.color.grey100};
-  background-color: ${({ theme }) => theme.color.buttonTertiary};
+  background-color: ${({ theme }) => theme.color.grey20};
   border-radius: 10px;
   margin: 0 auto;
   text-align: center;
@@ -115,5 +113,58 @@ export const NoticeBox = styled.div`
     border-radius: 12px;
     border: 2px solid transparent;
     animation: ${Spin} 4s linear infinite;
+  }
+`;
+
+// 팝업
+export const Modal = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: ${({ theme }) => theme.color.bgSurface};
+  padding: 30px;
+  z-index: 1000;
+  width: 80%;
+  max-width: 600px;
+  max-height: 600px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 10px;
+`;
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: ${({ theme }) => theme.color.grey40};
+  mask: url(${IconClose});
+  -webkit-mask: url(${IconClose});
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: cover;
+  width: 20px;
+  height: 20px;
+`;
+
+export const RecipeText = styled.p`
+  color: ${({ theme }) => theme.color.grey100};
+`;
+
+export const Ingredients = styled.ul`
+  color: ${({ theme }) => theme.color.grey100};
+
+  li + li {
+    margin-top: 10px;
   }
 `;
